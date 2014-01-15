@@ -6,7 +6,7 @@ POSIXVALA_DIR="$HOME/posixvala"
 BECAVSE_DIR="$HOME/becavse"
 
 VALA_COMPILE_PRE="-m64 -c"
-VALA_COMPILE_POST="-Wall -nostdlib -nostartfiles -nodefaultlibs -nostdinc -ffreestanding -I $POSIXVALA_DIR/include -I $BECAVSE_DIR/newlib/include -I $CROSS_COMPILER_PATH/lib/gcc/x86_64-elf/4.8.1/include"
+VALA_COMPILE_POST="-Wall -Wno-unused-but-set-variable -nostdlib -nostartfiles -nodefaultlibs -nostdinc -ffreestanding -I $POSIXVALA_DIR/include -I $BECAVSE_DIR/newlib/include -I $CROSS_COMPILER_PATH/lib/gcc/x86_64-elf/4.8.1/include"
 
 rm -rf tmp
 mkdir tmp
