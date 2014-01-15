@@ -5,4 +5,4 @@ disk.vdi
 .DS_Store
 *.swp
 tmp-glib/
-
+disk.hdd/

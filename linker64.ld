@@ -1,4 +1,4 @@
-ENTRY (_start)
+ENTRY (_vala_main)
 
 OUTPUT_FORMAT (binary)
  
