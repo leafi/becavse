@@ -6,3 +6,5 @@ disk.vdi
 *.swp
 tmp-glib/
 disk.hdd/
+*.userprefs
+

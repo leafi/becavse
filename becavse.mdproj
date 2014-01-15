@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ItemType>ValaProject</ItemType>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A58AA812-2376-44DD-B9C8-C84A8CEF3253}</ProjectGuid>
+    <compiler>
+      <compiler />
+    </compiler>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <Output>
+      <Output output="becavse" />
+    </Output>
+    <Build>
+      <Build target="Bin" />
+    </Build>
+    <CodeGeneration>
+      <CodeGeneration WarningLevel="Normal" WarningsAsErrors="False" OptimizationLevel="0" ExtraCompilerArguments="" DefineSymbols="DEBUG MONODEVELOP" EnableMultithreading="False" ctype="ValaCompilationParameters" />
+    </CodeGeneration>
+    <SourceDirectory>.</SourceDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release</OutputPath>
+    <Output>
+      <Output output="becavse" />
+    </Output>
+    <Build>
+      <Build target="Bin" />
+    </Build>
+    <CodeGeneration>
+      <CodeGeneration WarningLevel="Normal" WarningsAsErrors="False" OptimizationLevel="3" ExtraCompilerArguments="" DefineSymbols="MONODEVELOP" EnableMultithreading="False" ctype="ValaCompilationParameters" />
+    </CodeGeneration>
+    <SourceDirectory>.</SourceDirectory>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="main.vala" />
+  </ItemGroup>
+</Project>
