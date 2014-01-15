@@ -25,7 +25,7 @@ $GCC ${COMPILE_PRE}gobject/gatomicarray.c${COMPILE_POST}
 $GCC ${COMPILE_PRE}gobject/gvalue.c${COMPILE_POST}
 $GCC ${COMPILE_PRE}gobject/gtype.c${COMPILE_POST}
 
-$AR rcs ../lib/libposixvalaglib.a gatomic.o gdataset.o gparam.o ghashtable.o gatomicarray.o gvalue.o gtype.o
+$AR rcs ../lib/posixvala-libglib.a gatomic.o gdataset.o gparam.o ghashtable.o gatomicarray.o gvalue.o gtype.o
 
 cd ..
 

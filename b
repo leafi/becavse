@@ -32,7 +32,7 @@ echo linking flat 64bit kernel binary
 # /usr/bin/local/ld can be installed by doing 'brew install binutils' if you have homebrew.
 # if you already have gnu ld, you can just use that instead.
 #
-$HOME/opt/cross/bin/x86_64-elf-ld -T linker64.ld -o tmp/kernel64.sys tmp/main.o tmp/bits.o lib/libposixvalaglib.a newlib/lib/libm.a newlib/lib/libc.a newlib/lib/libnosys.a || exit
+$HOME/opt/cross/bin/x86_64-elf-ld -T linker64.ld -o tmp/kernel64.sys tmp/main.o tmp/bits.o lib/posixvala-libglib.a lib/newlib-libm.a lib/newlib-libc.a lib/newlib-libnosys.a || exit
 
 
 echo composing disk image for Parallels Desktop

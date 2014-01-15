@@ -1,0 +1,16 @@
+#!/bin/sh
+
+BECAVSE_DIR="$HOME/becavse"
+
+cd ~/newlib-x86_64-elf
+make || exit
+make install
+
+cd ~/build-newlib-x86_64-elf/x86_64-elf/lib
+~/opt/cross/bin/x86_64-elf-strip -d libc.a libm.a libnosys.a
+cp libc.a ${BECAVSE_DIR}/lib/newlib-libc.a
+cp libm.a ${BECAVSE_DIR}/lib/newlib-libm.a
+cp libnosys.a ${BECAVSE_DIR}/lib/newlib-libnosys.a
+
+cd ${BECAVSE_DIR}
+
