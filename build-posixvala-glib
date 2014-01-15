@@ -1,0 +1,31 @@
+rm -rf tmp-glib
+mkdir tmp-glib
+cd tmp-glib
+
+CROSS_COMPILER_PATH="$HOME/opt/cross"
+GCC="$CROSS_COMPILER_PATH/bin/x86_64-elf-gcc"
+AR="$CROSS_COMPILER_PATH/bin/x86_64-elf-ar"
+GCC_INCLUDE="$CROSS_COMPILER_PATH/lib/gcc/x86_64-elf/4.8.1/include"
+
+# note: this script uses leafi/posixvala! radare's doesn't need this script at all,
+#  but might not compile becavse successfully.
+POSIXVALA_DIR="$HOME/posixvala"
+BECAVSE_DIR="$HOME/becavse"
+
+
+COMPILE_PRE="-m64 -c $POSIXVALA_DIR/include/"
+COMPILE_POST=" -Wall -nostdlib -nostartfiles -nodefaultlibs -nostdinc -ffreestanding -I $BECAVSE_DIR/newlib/include -I $GCC_INCLUDE -I $POSIXVALA_DIR/include"
+
+$GCC ${COMPILE_PRE}gatomic.c${COMPILE_POST}
+$GCC ${COMPILE_PRE}gdataset.c${COMPILE_POST}
+$GCC ${COMPILE_PRE}gobject/gparam.c${COMPILE_POST}
+$GCC ${COMPILE_PRE}ghashtable.c${COMPILE_POST}
+$GCC ${COMPILE_PRE}gquark.c${COMPILE_POST}
+$GCC ${COMPILE_PRE}gobject/gatomicarray.c${COMPILE_POST}
+$GCC ${COMPILE_PRE}gobject/gvalue.c${COMPILE_POST}
+$GCC ${COMPILE_PRE}gobject/gtype.c${COMPILE_POST}
+
+$AR rcs ../lib/libposixvalaglib.a gatomic.o gdataset.o gparam.o ghashtable.o gatomicarray.o gvalue.o gtype.o
+
+cd ..
+

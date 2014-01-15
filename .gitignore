@@ -4,4 +4,5 @@ disk.img
 disk.vdi
 .DS_Store
 *.swp
+tmp-glib/
 
