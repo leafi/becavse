@@ -13,16 +13,27 @@ mkdir tmp
 
 echo compiling kernel bits
 
-cp main.vala tmp/main.vala
-echo main.vala :: vala to c
-$POSIXVALA_DIR/posixvala -C tmp/main.vala || exit
-rm tmp/main.vala
-# MAC OS X/BSD
-sed -i '' -e 's/!GLIB_CHECK_VERSION (2,35,0)/false/g' tmp/main.c
-# LINUX/GNU
-#sed -i'' -e 's/!GLIB_CHECK_VERSION (2,35,0)/false/g' tmp/main.c
-echo main.vala :: compile c
-$GCC $VALA_COMPILE_PRE -o tmp/main.o tmp/main.c $VALA_COMPILE_POST || exit
+bvala(){
+  local tmpsrc=tmp/$1
+  local c=`echo $tmpsrc | sed -e 's/vala/c/g'`
+  local obj=`echo $tmpsrc | sed -e 's/vala/o/g'`
+
+  cp $1 $tmpsrc
+
+  echo $1 :: vala to c
+  $POSIXVALA_DIR/posixvala -C $tmpsrc || exit
+  rm $tmpsrc
+
+  # sed in-place syntax differs for bsd and gnu sed,
+  #  so we do this weak sauce instead.
+  sed -e 's/!GLIB_CHECK_VERSION (2,35,0)/false/g' $c > ${c}.mangled
+  rm $c && mv ${c}.mangled $c
+
+  echo $1 :: compile c
+  $GCC $VALA_COMPILE_PRE -o $obj $c $VALA_COMPILE_POST || exit
+}
+
+bvala main.vala
 
 echo assemble bits.asm
 /usr/local/bin/nasm -f elf64 -o tmp/bits.o bits.asm
